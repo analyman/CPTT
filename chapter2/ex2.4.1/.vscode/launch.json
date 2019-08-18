@@ -6,15 +6,15 @@
    "configurations": [
         {
             "name": ".NET Core Launch (console)",
-            "type": "coreclr",
+            "type": "clr",
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/bin/Debug/netcoreapp2.2/ex2.4.1.dll",
+            "program": "${workspaceFolder}/bin/Debug/net461/win10-x64/ex2.4.1.exe",
             "args": [],
             "cwd": "${workspaceFolder}",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
-            "console": "internalConsole",
+            "console": "externalTerminal",
             "stopAtEntry": false
         },
         {

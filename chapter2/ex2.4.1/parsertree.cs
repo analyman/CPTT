@@ -17,7 +17,8 @@ namespace LdyCompiler
         public ParserTree(ParserTree[] v_children, List<Token> parsingTokens){
             m_childCount = v_children.Length;
             m_children = new List<ParserTree>();
-            Enumerable.Select<ParserTree, bool>(v_children, (ParserTree treeNode) => {m_children.Add(treeNode);return true;});
+            foreach(ParserTree node in v_children)
+                m_children.Add(node);
             m_parsingTokens = parsingTokens;
         }
 

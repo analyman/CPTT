@@ -21,7 +21,7 @@ namespace LdyCompiler
             ParserTree firstOp, secondOp, Op, retParseTree;
             ParserTree[] childNodes;
             List<Token> this_tokens;
-            switch (m_tokens[lookahead_index].Val){
+            switch (m_tokens[lookahead_index++].Val){
                 case "+":
                     Op = new ParserTree(new List<Token>(){t_plus});
                     firstOp = production_S();
@@ -48,7 +48,7 @@ namespace LdyCompiler
                     Op = new ParserTree(new List<Token>(){t_alpha_a});
                     return Op;
                 default:
-                    throw new ArgumentException("Error Token <" + this.m_tokens[lookahead_index].ToString() + ">");
+                    throw new ArgumentException("Error Token <" + this.m_tokens[lookahead_index - 1].ToString() + ">");
             }
         }
 
@@ -64,6 +64,8 @@ namespace LdyCompiler
                     return m_parsetree;
                 this.lookahead_index = 0;
                 m_parsetree = this.production_S();
+                if (lookahead_index != m_tokens.Count)
+                    throw new ArgumentException("Error Token <" + this.m_tokens[lookahead_index].ToString() + ">");
                 this.m_isValidParseTree = true;
                 return m_parsetree;
             }
@@ -75,6 +77,9 @@ namespace LdyCompiler
         public parser2_4_1_a(List<Token> v_tokens)
         {
             this.m_tokens = v_tokens;
+        }
+        public parser2_4_1_a(string parsingStr){
+            this.m_tokens = Token.GetSpaceToken(parsingStr);
         }
         public parser2_4_1_a() {}
     }

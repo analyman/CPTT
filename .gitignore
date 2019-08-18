@@ -1,8 +1,15 @@
 # cache
-**.cache
+**/*.cache
 
 # Compile output
-**.pdb
-**.exe
-**.dll
-**.lib
+**/*.exe
+**/*.dll
+**/*.lib
+**/*.pdb
+
+# build directory
+**/bin
+
+# obj
+**/obj/Release
+**/Obj/Debug

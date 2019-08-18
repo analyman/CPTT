@@ -45,7 +45,7 @@ namespace LdyCompiler
             return System.Text.Encoding.UTF8.GetString(data);
         }
 
-        public List<Token> GetSpaceToken(string str){
+        public static List<Token> GetSpaceToken(string str){
             List<Token> ret = new List<Token>();
             int string_length = str.Length;
             int left_index = 0, right_index = -1;
@@ -54,7 +54,7 @@ namespace LdyCompiler
                 throw new ArgumentException("The string is invalid in GetSpaceToken()");
             }
             for(;;){
-                left_index = str.IndexOfAny(valid_char, right_index);
+                left_index = str.IndexOfAny(valid_char, right_index + 1);
                 right_index = str.IndexOfAny(blank_char, left_index);
                 if (right_index == -1)
                 {
@@ -101,10 +101,8 @@ namespace LdyCompiler
             return m_token.Equals(obj.m_token);
         }
         
-        // override object.GetHashCode
         public override int GetHashCode()
         {
-            // TODO: write your implementation of GetHashCode() here
             return m_token.GetHashCode() ^ 0x051501113;
         }
     }
